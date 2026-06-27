@@ -354,6 +354,7 @@ for (let i = 0; i < starCount; i++) {
   animate();
 
   window.__stopEarth = () => { if (rafId) cancelAnimationFrame(rafId); };
+  window.__camera = camera;
 })();
 
 /* ===== Intro -> Site transition ===== */
