@@ -24,6 +24,44 @@ for (let i = 0; i < starCount; i++) {
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
   camera.position.set(0, 0.4, 7.4);
 
+  /* ---- Mouse-drag camera orbit ---- */
+  const camTarget = new THREE.Vector3(0, 1.5, 0);
+  const camRadius = camera.position.distanceTo(camTarget);
+  let camTheta = Math.atan2(camera.position.x - camTarget.x, camera.position.z - camTarget.z);
+  let camPhi = Math.acos((camera.position.y - camTarget.y) / camRadius);
+
+  function updateCameraPosition() {
+    const sinPhi = Math.sin(camPhi);
+    camera.position.x = camTarget.x + camRadius * sinPhi * Math.sin(camTheta);
+    camera.position.y = camTarget.y + camRadius * Math.cos(camPhi);
+    camera.position.z = camTarget.z + camRadius * sinPhi * Math.cos(camTheta);
+    camera.lookAt(camTarget);
+  }
+  updateCameraPosition();
+
+  let dragging = false, lastX = 0, lastY = 0;
+  canvas.style.cursor = 'grab';
+  canvas.addEventListener('pointerdown', (e) => {
+    dragging = true;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    canvas.style.cursor = 'grabbing';
+  });
+  window.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    lastX = e.clientX;
+    lastY = e.clientY;
+    camTheta -= dx * 0.005;
+    camPhi = Math.max(0.5, Math.min(Math.PI - 0.5, camPhi - dy * 0.005));
+    updateCameraPosition();
+  });
+  window.addEventListener('pointerup', () => {
+    dragging = false;
+    canvas.style.cursor = 'grab';
+  });
+
   function resize() {
     const w = window.innerWidth, h = window.innerHeight;
     renderer.setSize(w, h);
@@ -44,18 +82,14 @@ for (let i = 0; i < starCount; i++) {
   // Master group: lifted above the headline/button so the morphing
   // food shape stays clear of the text overlay.
   const stage = new THREE.Group();
-  stage.position.y = 1.6;
+  stage.position.y = 1.5;
   scene.add(stage);
 
-  const radius = 1.55;
+  const radius = 1.35;
 
-  /* ---- Network shell: wireframe + dots + connection lines ---- */
+  /* ---- Network: dots + connection lines (no enclosing globe mesh) ---- */
   const shell = new THREE.Group();
   stage.add(shell);
-
-  const wireGeo = new THREE.IcosahedronGeometry(radius, 2);
-  const wireMat = new THREE.MeshBasicMaterial({ color: 0xe8632a, wireframe: true, transparent: true, opacity: 0.16 });
-  shell.add(new THREE.Mesh(wireGeo, wireMat));
 
   const dotCount = 130;
   const dotPoints = [];
@@ -105,10 +139,6 @@ for (let i = 0; i < starCount; i++) {
     shell.add(mesh);
   }
 
-  const glowGeo = new THREE.SphereGeometry(radius * 1.22, 32, 32);
-  const glowMat = new THREE.MeshBasicMaterial({ color: 0xff7a3c, transparent: true, opacity: 0.08 });
-  shell.add(new THREE.Mesh(glowGeo, glowMat));
-
   /* ---- Ripple rings emanating from the center ---- */
   const rippleCount = 4;
   const ripples = [];
@@ -123,7 +153,7 @@ for (let i = 0; i < starCount; i++) {
   let rippleClock = 0;
 
   /* ---- Food shapes ---- */
-  const FOOD_SCALE = 1.75;
+  const FOOD_SCALE = 1.4;
   function makeFood(builder) {
     const g = new THREE.Group();
     builder(g);
@@ -137,10 +167,28 @@ for (let i = 0; i < starCount; i++) {
     donut: makeFood(g => {
       const m = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.55, 24, 48), new THREE.MeshStandardMaterial({ color: 0xc97a4a, roughness: 0.6 }));
       g.add(m);
-      const glaze = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.56, 16, 48, Math.PI * 1.7), new THREE.MeshStandardMaterial({ color: 0xff6f9c, roughness: 0.3 }));
-      glaze.rotation.x = Math.PI / 2;
-      glaze.position.y = 0.18;
+      // Glaze sits flush on the same ring as the dough, just slightly larger
+      // and pulled forward — no extra rotation, so it doesn't read as a second donut.
+      const glaze = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.57, 16, 48), new THREE.MeshStandardMaterial({ color: 0xff6f9c, roughness: 0.3 }));
+      glaze.position.z = 0.06;
       g.add(glaze);
+      // Sprinkles scattered across the glaze's front-facing surface
+      const sprinkleColors = [0xfff2c2, 0x7fd3e8, 0x9be564, 0xffffff, 0xffd23f];
+      const R = 1.1, r = 0.6;
+      for (let i = 0; i < 36; i++) {
+        const u = Math.random() * Math.PI * 2;
+        const v = 0.3 + Math.random() * 2.5;
+        const x = (R + r * Math.cos(v)) * Math.cos(u);
+        const y = (R + r * Math.cos(v)) * Math.sin(u);
+        const z = r * Math.sin(v);
+        const sprinkle = new THREE.Mesh(
+          new THREE.CapsuleGeometry(0.025, 0.1, 4, 8),
+          new THREE.MeshStandardMaterial({ color: sprinkleColors[i % sprinkleColors.length], roughness: 0.5 })
+        );
+        sprinkle.position.set(x, y, z);
+        sprinkle.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+        g.add(sprinkle);
+      }
     }),
     burger: makeFood(g => {
       const bunTop = new THREE.Mesh(new THREE.SphereGeometry(1.15, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xd99a4e, roughness: 0.7 }));
