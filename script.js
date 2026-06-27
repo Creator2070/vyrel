@@ -12,8 +12,8 @@ for (let i = 0; i < starCount; i++) {
   starField.appendChild(s);
 }
 
-/* ===== 3D Earth (Three.js) ===== */
-(function initEarth() {
+/* ===== 3D Food-Morph Globe (Three.js) ===== */
+(function initFoodMorph() {
   const canvas = document.getElementById('earthCanvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
@@ -22,7 +22,7 @@ for (let i = 0; i < starCount; i++) {
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-  camera.position.set(0, 0.3, 6.2);
+  camera.position.set(0, 0.4, 7.4);
 
   function resize() {
     const w = window.innerWidth, h = window.innerHeight;
@@ -33,81 +33,274 @@ for (let i = 0; i < starCount; i++) {
   resize();
   window.addEventListener('resize', resize);
 
-  const group = new THREE.Group();
-  scene.add(group);
+  scene.add(new THREE.AmbientLight(0xfff1e0, 0.9));
+  const keyLight = new THREE.DirectionalLight(0xffd9a0, 1.4);
+  keyLight.position.set(3, 4, 5);
+  scene.add(keyLight);
+  const rimLight = new THREE.DirectionalLight(0xff7a3c, 0.6);
+  rimLight.position.set(-4, -2, -3);
+  scene.add(rimLight);
 
-  // Wireframe globe
-  const radius = 2;
-  const wireGeo = new THREE.IcosahedronGeometry(radius, 3);
-  const wireMat = new THREE.MeshBasicMaterial({ color: 0x2fd6e0, wireframe: true, transparent: true, opacity: 0.18 });
-  group.add(new THREE.Mesh(wireGeo, wireMat));
+  // Master group: lifted above the headline/button so the morphing
+  // food shape stays clear of the text overlay.
+  const stage = new THREE.Group();
+  stage.position.y = 1.6;
+  scene.add(stage);
 
-  // Solid faint core
-  const coreGeo = new THREE.SphereGeometry(radius * 0.985, 64, 64);
-  const coreMat = new THREE.MeshBasicMaterial({ color: 0x060814, transparent: true, opacity: 0.85 });
-  group.add(new THREE.Mesh(coreGeo, coreMat));
+  const radius = 1.55;
 
-  // Network dots (random points on sphere surface)
-  const dotCount = 160;
-  const dotPositions = new Float32Array(dotCount * 3);
+  /* ---- Network shell: wireframe + dots + connection lines ---- */
+  const shell = new THREE.Group();
+  stage.add(shell);
+
+  const wireGeo = new THREE.IcosahedronGeometry(radius, 2);
+  const wireMat = new THREE.MeshBasicMaterial({ color: 0xe8632a, wireframe: true, transparent: true, opacity: 0.16 });
+  shell.add(new THREE.Mesh(wireGeo, wireMat));
+
+  const dotCount = 130;
   const dotPoints = [];
   for (let i = 0; i < dotCount; i++) {
     const phi = Math.acos(2 * Math.random() - 1);
     const theta = 2 * Math.PI * Math.random();
-    const r = radius * 1.01;
-    const x = r * Math.sin(phi) * Math.cos(theta);
-    const y = r * Math.sin(phi) * Math.sin(theta);
-    const z = r * Math.cos(phi);
-    dotPositions[i * 3] = x;
-    dotPositions[i * 3 + 1] = y;
-    dotPositions[i * 3 + 2] = z;
-    dotPoints.push(new THREE.Vector3(x, y, z));
+    const r = radius * 1.08;
+    dotPoints.push(new THREE.Vector3(
+      r * Math.sin(phi) * Math.cos(theta),
+      r * Math.sin(phi) * Math.sin(theta),
+      r * Math.cos(phi)
+    ));
   }
+  const dotPositions = new Float32Array(dotPoints.length * 3);
+  dotPoints.forEach((p, i) => { dotPositions[i * 3] = p.x; dotPositions[i * 3 + 1] = p.y; dotPositions[i * 3 + 2] = p.z; });
   const dotGeo = new THREE.BufferGeometry();
   dotGeo.setAttribute('position', new THREE.BufferAttribute(dotPositions, 3));
-  const dotMat = new THREE.PointsMaterial({ color: 0x6fe9ef, size: 0.045, transparent: true, opacity: 0.95 });
-  group.add(new THREE.Points(dotGeo, dotMat));
+  const dotMat = new THREE.PointsMaterial({ color: 0xffc27a, size: 0.075, transparent: true, opacity: 1 });
+  shell.add(new THREE.Points(dotGeo, dotMat));
 
-  // Connection lines between nearby points
+  const segments = [];
   const linePositions = [];
   for (let i = 0; i < dotPoints.length; i++) {
     let connected = 0;
     for (let j = i + 1; j < dotPoints.length && connected < 2; j++) {
-      if (dotPoints[i].distanceTo(dotPoints[j]) < 0.9) {
-        linePositions.push(dotPoints[i].x, dotPoints[i].y, dotPoints[i].z);
-        linePositions.push(dotPoints[j].x, dotPoints[j].y, dotPoints[j].z);
+      if (dotPoints[i].distanceTo(dotPoints[j]) < 1.05) {
+        linePositions.push(dotPoints[i].x, dotPoints[i].y, dotPoints[i].z, dotPoints[j].x, dotPoints[j].y, dotPoints[j].z);
+        segments.push([dotPoints[i], dotPoints[j]]);
         connected++;
       }
     }
   }
   const lineGeo = new THREE.BufferGeometry();
   lineGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(linePositions), 3));
-  const lineMat = new THREE.LineBasicMaterial({ color: 0x2fd6e0, transparent: true, opacity: 0.25 });
-  group.add(new THREE.LineSegments(lineGeo, lineMat));
+  const lineMat = new THREE.LineBasicMaterial({ color: 0xf4a93c, transparent: true, opacity: 0.45 });
+  shell.add(new THREE.LineSegments(lineGeo, lineMat));
 
-  // Outer glow ring
-  const glowGeo = new THREE.SphereGeometry(radius * 1.18, 32, 32);
-  const glowMat = new THREE.MeshBasicMaterial({ color: 0x3b6cff, transparent: true, opacity: 0.06 });
-  group.add(new THREE.Mesh(glowGeo, glowMat));
-
-  // Background particles (stars in 3D space)
-  const starGeo = new THREE.BufferGeometry();
-  const starCount3D = 600;
-  const starPos = new Float32Array(starCount3D * 3);
-  for (let i = 0; i < starCount3D; i++) {
-    starPos[i * 3] = (Math.random() - 0.5) * 40;
-    starPos[i * 3 + 1] = (Math.random() - 0.5) * 40;
-    starPos[i * 3 + 2] = (Math.random() - 0.5) * 40 - 5;
+  // Traveling pulses along the "circuit" lines (Leiterbahnbewegungen)
+  const pulseCount = 22;
+  const pulseGeo = new THREE.SphereGeometry(0.05, 8, 8);
+  const pulseMat = new THREE.MeshBasicMaterial({ color: 0xffe2b0, transparent: true, opacity: 0.95 });
+  const pulses = [];
+  for (let i = 0; i < pulseCount && segments.length; i++) {
+    const mesh = new THREE.Mesh(pulseGeo, pulseMat.clone());
+    const seg = segments[Math.floor(Math.random() * segments.length)];
+    pulses.push({ mesh, seg, t: Math.random(), speed: 0.25 + Math.random() * 0.5 });
+    shell.add(mesh);
   }
-  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  const starMat = new THREE.PointsMaterial({ color: 0xffffff, size: 0.025, transparent: true, opacity: 0.5 });
-  scene.add(new THREE.Points(starGeo, starMat));
+
+  const glowGeo = new THREE.SphereGeometry(radius * 1.22, 32, 32);
+  const glowMat = new THREE.MeshBasicMaterial({ color: 0xff7a3c, transparent: true, opacity: 0.08 });
+  shell.add(new THREE.Mesh(glowGeo, glowMat));
+
+  /* ---- Ripple rings emanating from the center ---- */
+  const rippleCount = 4;
+  const ripples = [];
+  for (let i = 0; i < rippleCount; i++) {
+    const ringGeo = new THREE.RingGeometry(0.98, 1.05, 64);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0xffb066, transparent: true, opacity: 0, side: THREE.DoubleSide });
+    const mesh = new THREE.Mesh(ringGeo, ringMat);
+    mesh.rotation.x = Math.PI / 2.4;
+    ripples.push({ mesh, life: 999, delay: i * 1.1 });
+    stage.add(mesh);
+  }
+  let rippleClock = 0;
+
+  /* ---- Food shapes ---- */
+  const FOOD_SCALE = 1.75;
+  function makeFood(builder) {
+    const g = new THREE.Group();
+    builder(g);
+    g.traverse(o => { if (o.isMesh) { o.material = o.material.clone(); o.material.transparent = true; o.material.opacity = 0; } });
+    g.scale.setScalar(0.001);
+    stage.add(g);
+    return g;
+  }
+
+  const foods = {
+    donut: makeFood(g => {
+      const m = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.55, 24, 48), new THREE.MeshStandardMaterial({ color: 0xc97a4a, roughness: 0.6 }));
+      g.add(m);
+      const glaze = new THREE.Mesh(new THREE.TorusGeometry(1.1, 0.56, 16, 48, Math.PI * 1.7), new THREE.MeshStandardMaterial({ color: 0xff6f9c, roughness: 0.3 }));
+      glaze.rotation.x = Math.PI / 2;
+      glaze.position.y = 0.18;
+      g.add(glaze);
+    }),
+    burger: makeFood(g => {
+      const bunTop = new THREE.Mesh(new THREE.SphereGeometry(1.15, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xd99a4e, roughness: 0.7 }));
+      bunTop.position.y = 0.55;
+      g.add(bunTop);
+      const lettuce = new THREE.Mesh(new THREE.CylinderGeometry(1.22, 1.22, 0.18, 24), new THREE.MeshStandardMaterial({ color: 0x6fae3f, roughness: 0.8 }));
+      lettuce.position.y = 0.32;
+      g.add(lettuce);
+      const patty = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.05, 0.34, 24), new THREE.MeshStandardMaterial({ color: 0x5a3420, roughness: 0.9 }));
+      patty.position.y = 0.05;
+      g.add(patty);
+      const cheese = new THREE.Mesh(new THREE.BoxGeometry(2.1, 0.06, 2.1), new THREE.MeshStandardMaterial({ color: 0xf2c14e, roughness: 0.5 }));
+      cheese.rotation.y = Math.PI / 4;
+      cheese.position.y = 0.22;
+      g.add(cheese);
+      const bunBottom = new THREE.Mesh(new THREE.CylinderGeometry(1.1, 1.0, 0.4, 24), new THREE.MeshStandardMaterial({ color: 0xcf8d44, roughness: 0.7 }));
+      bunBottom.position.y = -0.32;
+      g.add(bunBottom);
+    }),
+    curry: makeFood(g => {
+      const plate = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 0.12, 48), new THREE.MeshStandardMaterial({ color: 0xf2ece1, roughness: 0.4 }));
+      g.add(plate);
+      const rice = new THREE.Mesh(new THREE.TorusGeometry(0.85, 0.28, 16, 32), new THREE.MeshStandardMaterial({ color: 0xf3e6b8, roughness: 0.8 }));
+      rice.rotation.x = Math.PI / 2;
+      rice.position.y = 0.1;
+      g.add(rice);
+      const curry = new THREE.Mesh(new THREE.SphereGeometry(0.75, 24, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xd9722b, roughness: 0.6 }));
+      curry.position.y = 0.12;
+      g.add(curry);
+    }),
+    pizza: makeFood(g => {
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, 0.16, 48), new THREE.MeshStandardMaterial({ color: 0xe8b563, roughness: 0.7 }));
+      g.add(base);
+      const sauce = new THREE.Mesh(new THREE.CylinderGeometry(1.38, 1.38, 0.04, 48), new THREE.MeshStandardMaterial({ color: 0xb5402a, roughness: 0.6 }));
+      sauce.position.y = 0.1;
+      g.add(sauce);
+      for (let i = 0; i < 8; i++) {
+        const a = (i / 8) * Math.PI * 2;
+        const topping = new THREE.Mesh(new THREE.SphereGeometry(0.18, 12, 12), new THREE.MeshStandardMaterial({ color: 0xb5402a, roughness: 0.5 }));
+        topping.position.set(Math.cos(a) * 0.9, 0.18, Math.sin(a) * 0.9);
+        g.add(topping);
+      }
+    }),
+    salad: makeFood(g => {
+      const bowl = new THREE.Mesh(new THREE.SphereGeometry(1.3, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xfaf3e6, roughness: 0.5, side: THREE.DoubleSide }));
+      bowl.rotation.x = Math.PI;
+      bowl.position.y = -0.2;
+      g.add(bowl);
+      for (let i = 0; i < 14; i++) {
+        const leaf = new THREE.Mesh(new THREE.IcosahedronGeometry(0.26, 0), new THREE.MeshStandardMaterial({ color: i % 2 ? 0x7fb24a : 0xe0594a, roughness: 0.7 }));
+        const a = Math.random() * Math.PI * 2;
+        const r = Math.random() * 0.85;
+        leaf.position.set(Math.cos(a) * r, Math.random() * 0.3, Math.sin(a) * r);
+        g.add(leaf);
+      }
+    }),
+    sushi: makeFood(g => {
+      for (let i = 0; i < 5; i++) {
+        const x = (i - 2) * 0.62;
+        const rice = new THREE.Mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.7, 24), new THREE.MeshStandardMaterial({ color: 0xfaf6ee, roughness: 0.7 }));
+        rice.position.set(x, 0, 0);
+        g.add(rice);
+        const nori = new THREE.Mesh(new THREE.CylinderGeometry(0.43, 0.43, 0.22, 24), new THREE.MeshStandardMaterial({ color: 0x2c2f1f, roughness: 0.6 }));
+        nori.position.set(x, 0.24, 0);
+        g.add(nori);
+        const topping = new THREE.Mesh(new THREE.SphereGeometry(0.4, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2.4), new THREE.MeshStandardMaterial({ color: i % 2 ? 0xe8633f : 0xf4a93c, roughness: 0.5 }));
+        topping.position.set(x, 0.34, 0);
+        g.add(topping);
+      }
+    }),
+    soup: makeFood(g => {
+      const bowl = new THREE.Mesh(new THREE.SphereGeometry(1.35, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2), new THREE.MeshStandardMaterial({ color: 0xe7e1d4, roughness: 0.5, side: THREE.DoubleSide }));
+      bowl.rotation.x = Math.PI;
+      bowl.position.y = -0.25;
+      g.add(bowl);
+      const broth = new THREE.Mesh(new THREE.CylinderGeometry(1.15, 1.15, 0.06, 40), new THREE.MeshStandardMaterial({ color: 0xd9852f, roughness: 0.3 }));
+      broth.position.y = -0.05;
+      g.add(broth);
+      for (let i = 0; i < 6; i++) {
+        const a = Math.random() * Math.PI * 2;
+        const r = Math.random() * 0.7;
+        const garnish = new THREE.Mesh(new THREE.TorusGeometry(0.12, 0.04, 8, 16), new THREE.MeshStandardMaterial({ color: 0x6fae3f, roughness: 0.7 }));
+        garnish.position.set(Math.cos(a) * r, 0, Math.sin(a) * r);
+        garnish.rotation.x = Math.PI / 2;
+        g.add(garnish);
+      }
+    })
+  };
+
+  const order = ['donut', 'burger', 'curry', 'pizza', 'salad', 'sushi', 'soup', 'burger'];
+  let idx = 0;
+  let phase = 0; // 0..1 within current hold+transition cycle
+  const HOLD = 1.6;
+  const TRANSITION = 1.1;
+  const CYCLE = HOLD + TRANSITION;
+
+  function setFoodState(name, opacity, scale) {
+    const g = foods[name];
+    g.scale.setScalar(Math.max(scale, 0.001) * FOOD_SCALE);
+    g.traverse(o => { if (o.isMesh) o.material.opacity = opacity; });
+  }
+
+  Object.keys(foods).forEach(k => setFoodState(k, 0, 0.001));
+  setFoodState(order[0], 1, 1);
+
+  const clock = new THREE.Clock();
+  let cycleT = 0;
 
   let rafId;
   function animate() {
     rafId = requestAnimationFrame(animate);
-    group.rotation.y += 0.0022;
-    group.rotation.x = Math.sin(Date.now() * 0.0001) * 0.05;
+    const dt = clock.getDelta();
+    cycleT += dt;
+
+    shell.rotation.y += 0.0032;
+    shell.rotation.x = Math.sin(Date.now() * 0.00012) * 0.06;
+
+    const currentName = order[idx];
+    const nextName = order[(idx + 1) % order.length];
+
+    if (cycleT < HOLD) {
+      setFoodState(currentName, 1, 1);
+      foods[currentName].rotation.y += dt * 0.4;
+    } else {
+      const t = Math.min((cycleT - HOLD) / TRANSITION, 1);
+      const ease = t * t * (3 - 2 * t);
+      setFoodState(currentName, 1 - ease, 1 - ease * 0.85);
+      setFoodState(nextName, ease, 0.15 + ease * 0.85);
+      foods[currentName].rotation.y += dt * 0.4;
+      foods[nextName].rotation.y += dt * 0.4;
+      if (t >= 1) {
+        cycleT = 0;
+        idx = (idx + 1) % order.length;
+      }
+    }
+
+    // traveling pulses along the network lines
+    pulses.forEach(p => {
+      p.t += dt * p.speed;
+      if (p.t > 1) {
+        p.t = 0;
+        p.seg = segments[Math.floor(Math.random() * segments.length)];
+      }
+      p.mesh.position.lerpVectors(p.seg[0], p.seg[1], p.t);
+    });
+
+    // ripple rings
+    rippleClock += dt;
+    ripples.forEach(r => {
+      const local = (rippleClock - r.delay) % (rippleCount * 1.1);
+      if (local >= 0 && local < 2.4) {
+        const t = local / 2.4;
+        const s = 0.4 + t * 2.4;
+        r.mesh.scale.setScalar(s);
+        r.mesh.material.opacity = (1 - t) * 0.5;
+      } else {
+        r.mesh.material.opacity = 0;
+      }
+    });
+
     renderer.render(scene, camera);
   }
   animate();
