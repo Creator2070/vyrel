@@ -3,222 +3,308 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vyrel – Digitale Lösungen für Gastronomie</title>
-<meta name="description" content="Vyrel entwickelt professionelle Websites und digitale Speisepläne für Restaurants, Cafés und gastronomische Betriebe.">
+<title>Vyrel – Premium Webdesign für Unternehmen</title>
+<meta name="description" content="Vyrel entwickelt moderne, hochwertige Webseiten für Unternehmen, Restaurants und Marken. Individuelles Webdesign, schnelle Umsetzung, faire Preise.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a href="#top" class="logo">Vyrel</a>
-    <nav class="nav-links">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#speiseplaene">Speisepläne</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#referenzen">Referenzen</a>
-      <a href="#kontakt" class="nav-cta">Kontakt</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menü öffnen" id="navToggle">
-      <span></span><span></span><span></span>
+<!-- INTRO / 3D ERDE -->
+<div class="intro" id="intro">
+  <canvas id="earthCanvas"></canvas>
+  <div class="intro-stars" id="introStars"></div>
+  <div class="intro-content">
+    <p class="intro-eyebrow">Webdesign · Digitale Lösungen</p>
+    <h1>Ich entwickle professionelle Webseiten für Unternehmen.</h1>
+    <button class="btn btn-primary btn-enter" id="enterBtn">
+      <span>Website betreten</span>
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </button>
   </div>
-</header>
+</div>
 
-<section class="hero" id="top">
-  <img class="hero-img" id="heroImg" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1920&q=80" alt="Restaurant von oben">
-  <div class="hero-overlay"></div>
-  <div class="container hero-content">
-    <p class="eyebrow fade-up">Digitalagentur für Gastronomie</p>
-    <h1 class="fade-up" style="--d:0.1s">Ihr Restaurant, <span>aus der Vogelperspektive</span> betrachtet.</h1>
-    <p class="hero-sub fade-up" style="--d:0.2s">Vyrel gestaltet Websites und digitale Speisepläne, die Ihr Lokal so präsentieren, wie es Ihre Gäste verdienen – modern, schnell und überall erreichbar.</p>
-    <div class="hero-actions fade-up" style="--d:0.3s">
-      <a href="#kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a>
-      <a href="#leistungen" class="btn btn-ghost">Leistungen ansehen</a>
+<!-- HAUPTSEITE -->
+<div class="site" id="site">
+
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-grid"></div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="logo">Vyrel<span class="dot">.</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#ueber-mich">Über mich</a>
+        <a href="#warum-ich">Warum ich</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#kontakt" class="nav-cta">Kontakt</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menü öffnen" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-  <div class="hero-scroll">
-    <span>Scrollen</span>
-    <div class="scroll-line"></div>
-  </div>
-</section>
+  </header>
 
-<section class="trust-bar">
-  <div class="container trust-items">
-    <div class="trust-item"><strong>100%</strong><span>maßgeschneidert</span></div>
-    <div class="trust-item"><strong>&lt; 14 Tage</strong><span>bis zum Launch</span></div>
-    <div class="trust-item"><strong>Mobil optimiert</strong><span>für jedes Gerät</span></div>
-    <div class="trust-item"><strong>Persönlicher</strong><span>Ansprechpartner</span></div>
-  </div>
-</section>
+  <section class="hero" id="top">
+    <div class="container hero-content">
+      <p class="eyebrow reveal">Webdesign Studio</p>
+      <h1 class="reveal" style="--d:0.05s">Webseiten, die <span class="grad-text">begeistern</span> und Kunden gewinnen.</h1>
+      <p class="hero-sub reveal" style="--d:0.15s">Ich gestalte moderne, schnelle und individuelle Webseiten für Unternehmen, Restaurants und Marken – mit Fokus auf Design, Performance und messbare Ergebnisse.</p>
+      <div class="hero-actions reveal" style="--d:0.25s">
+        <a href="#kontakt" class="btn btn-primary">Projekt starten</a>
+        <a href="#referenzen" class="btn btn-ghost">Referenzen ansehen</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scrollen</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
 
-<section class="section" id="leistungen">
-  <div class="container">
-    <p class="section-tag">Unsere Leistungen</p>
-    <h2>Alles, was Ihr Betrieb digital braucht</h2>
-    <p class="section-lead">Von der ersten Idee bis zur fertigen Website – wir liefern Lösungen, die zur Gastronomie passen.</p>
+  <section class="trust-bar">
+    <div class="container trust-items">
+      <div class="trust-item reveal"><strong>100%</strong><span>individuelles Design</span></div>
+      <div class="trust-item reveal" style="--d:0.05s"><strong>&lt; 14 Tage</strong><span>bis zum Launch</span></div>
+      <div class="trust-item reveal" style="--d:0.1s"><strong>Mobile First</strong><span>jedes Gerät</span></div>
+      <div class="trust-item reveal" style="--d:0.15s"><strong>SEO-optimiert</strong><span>von Anfang an</span></div>
+    </div>
+  </section>
 
-    <div class="services-grid">
-      <article class="service-card reveal">
-        <div class="service-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant Website Design" loading="lazy"></div>
-        <div class="service-body">
-          <h3>Websites für Restaurants &amp; Cafés</h3>
-          <p>Individuell gestaltete, schnelle und responsive Websites, die Ihre Atmosphäre digital einfangen – inklusive Standort, Öffnungszeiten und Reservierungsmöglichkeit.</p>
+  <section class="section" id="leistungen">
+    <div class="container">
+      <p class="section-tag reveal">Dienstleistungen</p>
+      <h2 class="reveal">Was ich für dich entwickle</h2>
+      <p class="section-lead reveal">Maßgeschneiderte digitale Lösungen – von der Landingpage bis zur kompletten Unternehmenswebsite.</p>
+
+      <div class="services-grid">
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>
+          </div>
+          <h3>Webdesign</h3>
+          <p>Individuelle, moderne Webseiten, abgestimmt auf deine Marke und Zielgruppe.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 3 4 14h7l-1 7 9-11h-7l1-7z"/></svg>
+          </div>
+          <h3>Landingpages</h3>
+          <p>Conversion-optimierte Seiten, die Besucher gezielt in Kunden verwandeln.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </div>
+          <h3>Speisekarten</h3>
+          <p>Elegante Print- und Layoutvorlagen für klassische Speisekarten.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 18h6"/></svg>
+          </div>
+          <h3>Digitale Speisekarten</h3>
+          <p>QR-Code-Menüs, mobil optimiert und in Minuten aktualisierbar.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17h2l2-5 3 8 3-12 2 6h6"/></svg>
+          </div>
+          <h3>Webseiten für Restaurants</h3>
+          <p>Websites, die Atmosphäre, Lage und Menü perfekt in Szene setzen.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-8h6v8"/></svg>
+          </div>
+          <h3>Webseiten für Unternehmen</h3>
+          <p>Professioneller Online-Auftritt, der Vertrauen schafft und überzeugt.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.04 1.56V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.35a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.65 15a1.7 1.7 0 0 0-1.56-1.04H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.65 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.65a1.7 1.7 0 0 0 1.04-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.35 9a1.7 1.7 0 0 0 1.56 1.04H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.56 1.04z"/></svg>
+          </div>
+          <h3>Wartung von Webseiten</h3>
+          <p>Updates, Sicherheit und Performance – dauerhaft im Blick.</p>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Individuelle Lösungen</h3>
+          <p>Sonderwünsche, Integrationen und Funktionen – ganz nach deinem Bedarf.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="ueber-mich">
+    <div class="container about-inner">
+      <div class="about-visual reveal">
+        <div class="about-orb"></div>
+        <div class="about-card">
+          <span class="about-card-num">3+</span>
+          <span class="about-card-label">Jahre Erfahrung</span>
         </div>
-      </article>
+      </div>
+      <div class="about-text reveal">
+        <p class="section-tag">Über mich</p>
+        <h2>Jung, motiviert und voller Energie für dein Projekt.</h2>
+        <p class="section-lead">Ich bin Webdesigner mit Leidenschaft für modernes, klares Design und durchdachte Nutzererlebnisse. Jedes Projekt entwickle ich individuell – kein Baukasten, keine Vorlagen von der Stange.</p>
+        <ul class="check-list">
+          <li>Modernes, zeitgemäßes Design</li>
+          <li>Individuelle Lösungen statt Schablonen</li>
+          <li>Schnelle, zuverlässige Umsetzung</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <article class="service-card reveal">
-        <div class="service-img"><img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=800&q=80" alt="Digitale Speisepläne" loading="lazy"></div>
-        <div class="service-body">
-          <h3>Digitale Speisepläne &amp; Menükarten</h3>
-          <p>Übersichtliche, leicht zu aktualisierende Speisepläne – als QR-Code-Menü oder eingebunden auf Ihrer Website. Saisonale Änderungen in wenigen Minuten umgesetzt.</p>
+  <section class="section" id="warum-ich">
+    <div class="container">
+      <p class="section-tag reveal">Vorteile</p>
+      <h2 class="reveal">Warum mit mir arbeiten?</h2>
+      <div class="why-grid reveal-group">
+        <div class="why-item reveal">
+          <span class="why-check">✓</span>
+          <h3>Modernes Design</h3>
+          <p>Zeitgemäße Optik, die sofort überzeugt.</p>
         </div>
-      </article>
-
-      <article class="service-card reveal">
-        <div class="service-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80" alt="Online-Reservierung" loading="lazy"></div>
-        <div class="service-body">
-          <h3>Online-Reservierung</h3>
-          <p>Tischreservierungen direkt über Ihre Website – einfach für Gäste, übersichtlich für Sie. Keine verpassten Anrufe mehr.</p>
+        <div class="why-item reveal">
+          <span class="why-check">✓</span>
+          <h3>Schnelle Umsetzung</h3>
+          <p>Vom Konzept zum Launch in kurzer Zeit.</p>
         </div>
-      </article>
-
-      <article class="service-card reveal">
-        <div class="service-img"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Drohnenaufnahmen" loading="lazy"></div>
-        <div class="service-body">
-          <h3>Foto- &amp; Drohnenaufnahmen</h3>
-          <p>Hochwertige Aufnahmen Ihres Lokals – auch aus der Luft. So zeigen Sie Ihren Gästen Ambiente, Lage und Außenbereich auf einen Blick.</p>
+        <div class="why-item reveal">
+          <span class="why-check">✓</span>
+          <h3>Individuelle Beratung</h3>
+          <p>Persönlicher Austausch statt Standardpaket.</p>
         </div>
-      </article>
-
-      <article class="service-card reveal">
-        <div class="service-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80" alt="Lokale Sichtbarkeit" loading="lazy"></div>
-        <div class="service-body">
-          <h3>Lokale Sichtbarkeit (SEO)</h3>
-          <p>Damit Sie gefunden werden, wenn Gäste in Ihrer Nähe nach gutem Essen suchen – inklusive Google-Unternehmensprofil-Optimierung.</p>
+        <div class="why-item reveal">
+          <span class="why-check">✓</span>
+          <h3>Mobil optimiert</h3>
+          <p>Perfekte Darstellung auf jedem Gerät.</p>
         </div>
-      </article>
-
-      <article class="service-card reveal">
-        <div class="service-img"><img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&w=800&q=80" alt="Betreuung und Wartung" loading="lazy"></div>
-        <div class="service-body">
-          <h3>Betreuung &amp; Wartung</h3>
-          <p>Wir halten Ihre Website aktuell, sicher und schnell – auch nach dem Launch sind wir an Ihrer Seite.</p>
+        <div class="why-item reveal">
+          <span class="why-check">✓</span>
+          <h3>SEO-freundlich</h3>
+          <p>Sichtbar bei Google von Tag eins an.</p>
         </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section menu-showcase" id="speiseplaene">
-  <div class="container menu-showcase-inner">
-    <div class="menu-showcase-text reveal">
-      <p class="section-tag">Speisepläne, die Appetit machen</p>
-      <h2>Ihr Menü, digital in Szene gesetzt</h2>
-      <p class="section-lead">Wie bei einem gedruckten Menü – nur schöner, schneller aktualisierbar und auf jedem Smartphone perfekt lesbar. Wir gestalten Ihre digitale Speisekarte mit hochwertiger Food-Fotografie und klarer Struktur.</p>
-      <ul class="menu-points">
-        <li>Saisonale Karten in Minuten aktualisiert</li>
-        <li>QR-Code-Menü für den Tisch</li>
-        <li>Mehrsprachig &amp; barrierearm</li>
-      </ul>
-      <a href="#kontakt" class="btn btn-primary">Speiseplan anfragen</a>
-    </div>
-    <div class="menu-showcase-images reveal">
-      <img class="menu-img menu-img-1" src="https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=700&q=80" alt="Speiseplan Vorschau" loading="lazy">
-      <img class="menu-img menu-img-2" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=500&q=80" alt="Gericht Nahaufnahme" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<section class="section section-alt" id="ablauf">
-  <div class="container">
-    <p class="section-tag">So arbeiten wir</p>
-    <h2>Vom Erstgespräch zur fertigen Website</h2>
-
-    <div class="steps reveal-group">
-      <div class="step reveal">
-        <span class="step-num">01</span>
-        <h3>Kennenlernen</h3>
-        <p>Wir besprechen Ihre Wünsche, Ihr Konzept und Ihre Zielgruppe – unverbindlich und kostenlos.</p>
-      </div>
-      <div class="step reveal">
-        <span class="step-num">02</span>
-        <h3>Konzept &amp; Design</h3>
-        <p>Wir entwerfen ein Design, das zu Ihrem Lokal passt, inklusive Speiseplan-Struktur und Bildmaterial.</p>
-      </div>
-      <div class="step reveal">
-        <span class="step-num">03</span>
-        <h3>Umsetzung</h3>
-        <p>Wir entwickeln Ihre Website und richten den digitalen Speiseplan ein – Sie erhalten Einblick in den Fortschritt.</p>
-      </div>
-      <div class="step reveal">
-        <span class="step-num">04</span>
-        <h3>Launch &amp; Betreuung</h3>
-        <p>Ihre Website geht live. Wir bleiben für Updates, Änderungen und Fragen erreichbar.</p>
+        <div class="why-item reveal">
+          <span class="why-check">✓</span>
+          <h3>Faire Preise</h3>
+          <p>Transparente Kosten ohne versteckte Gebühren.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="section" id="referenzen">
-  <div class="container">
-    <p class="section-tag">Vertrauen</p>
-    <h2>Warum Vyrel?</h2>
-    <div class="why-grid reveal-group">
-      <div class="why-item reveal">
-        <h3>Spezialisiert auf Gastronomie</h3>
-        <p>Wir kennen die Anforderungen von Restaurants, Bistros und Cafés – von Speisekarten bis Bewertungen.</p>
-      </div>
-      <div class="why-item reveal">
-        <h3>Transparente Preise</h3>
-        <p>Keine versteckten Kosten. Sie wissen von Anfang an, was Ihre Website kostet.</p>
-      </div>
-      <div class="why-item reveal">
-        <h3>Schnelle Umsetzung</h3>
-        <p>In der Regel ist Ihre Website innerhalb von zwei Wochen einsatzbereit.</p>
-      </div>
-      <div class="why-item reveal">
-        <h3>Persönlicher Kontakt</h3>
-        <p>Ein fester Ansprechpartner begleitet Sie durch das gesamte Projekt.</p>
+  <section class="section section-alt" id="referenzen">
+    <div class="container">
+      <p class="section-tag reveal">Referenzen</p>
+      <h2 class="reveal">Ausgewählte Projekte</h2>
+      <p class="section-lead reveal">Ein Einblick in Projekte, die Design, Funktion und Performance vereinen.</p>
+
+      <div class="portfolio-grid">
+        <article class="portfolio-card reveal">
+          <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Restaurant Website" loading="lazy"></div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Gastronomie</span>
+            <h3>Restaurant Website</h3>
+          </div>
+        </article>
+        <article class="portfolio-card reveal">
+          <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Unternehmens-Website" loading="lazy"></div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Business</span>
+            <h3>Unternehmens-Website</h3>
+          </div>
+        </article>
+        <article class="portfolio-card reveal">
+          <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=900&q=80" alt="Landingpage" loading="lazy"></div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Landingpage</span>
+            <h3>Produkt-Launch Seite</h3>
+          </div>
+        </article>
+        <article class="portfolio-card reveal">
+          <div class="portfolio-img"><img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=900&q=80" alt="Digitale Speisekarte" loading="lazy"></div>
+          <div class="portfolio-body">
+            <span class="portfolio-tag">Digitale Speisekarte</span>
+            <h3>QR-Menü Konzept</h3>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="cta-banner" id="kontakt">
-  <div class="container cta-inner">
-    <h2>Bereit für eine Website, die zu Ihrem Lokal passt?</h2>
-    <p>Schreiben Sie uns – wir melden uns innerhalb von 24 Stunden für ein unverbindliches Erstgespräch.</p>
-    <form class="contact-form" id="contactForm">
-      <div class="form-row">
-        <input type="text" name="name" placeholder="Ihr Name" required>
-        <input type="email" name="email" placeholder="Ihre E-Mail" required>
+  <section class="cta-banner" id="kontakt">
+    <div class="container cta-inner">
+      <p class="section-tag reveal">Kontakt</p>
+      <h2 class="reveal">Lass uns dein Projekt starten.</h2>
+      <p class="reveal">Schreib mir kurz dein Anliegen – ich melde mich innerhalb von 24 Stunden zurück.</p>
+
+      <div class="contact-grid reveal">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <input type="text" name="name" placeholder="Dein Name" required>
+            <input type="email" name="email" placeholder="Deine E-Mail" required>
+          </div>
+          <textarea name="message" placeholder="Erzähl mir kurz von deinem Projekt..." rows="5" required></textarea>
+          <button type="submit" class="btn btn-primary">Nachricht senden</button>
+          <p class="form-note" id="formNote"></p>
+        </form>
+
+        <div class="contact-side">
+          <a href="https://wa.me/491234567890" class="contact-link" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.6 6.3A8.8 8.8 0 0 0 12 4a8.9 8.9 0 0 0-7.7 13.4L3 21l3.7-1.2A8.9 8.9 0 0 0 12 21a8.9 8.9 0 0 0 5.6-15.7zM12 19.3a7.3 7.3 0 0 1-3.7-1l-.3-.2-2.6.9.9-2.5-.2-.3A7.3 7.3 0 1 1 19.3 12 7.3 7.3 0 0 1 12 19.3z"/></svg>
+            <span>WhatsApp</span>
+          </a>
+          <a href="mailto:hallo@vyrel.de" class="contact-link">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <span>hallo@vyrel.de</span>
+          </a>
+          <a href="#" class="contact-link">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+            <span>Instagram</span>
+          </a>
+        </div>
       </div>
-      <input type="text" name="restaurant" placeholder="Name Ihres Betriebs">
-      <textarea name="message" placeholder="Erzählen Sie uns kurz von Ihrem Projekt..." rows="4"></textarea>
-      <button type="submit" class="btn btn-primary">Nachricht senden</button>
-      <p class="form-note" id="formNote"></p>
-    </form>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <span class="logo">Vyrel</span>
-      <p>Digitale Lösungen für die Gastronomie.</p>
     </div>
-    <div class="footer-links">
-      <a href="#leistungen">Leistungen</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#kontakt">Kontakt</a>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo">Vyrel<span class="dot">.</span></span>
+        <p>Premium Webdesign für Unternehmen.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#kontakt">Impressum</a>
+        <a href="#kontakt">Datenschutz</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="LinkedIn">LI</a>
+      </div>
     </div>
     <p class="footer-copy">© <span id="year"></span> Vyrel. Alle Rechte vorbehalten.</p>
-  </div>
-</footer>
+  </footer>
 
+</div>
+
+<script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
