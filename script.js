@@ -155,13 +155,18 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.05, rootMargin: '0px 0px -10% 0px' });
 
 document.querySelectorAll('.reveal').forEach((el, i) => {
   if (!el.style.getPropertyValue('--d')) {
     el.style.setProperty('--d', `${(i % 5) * 0.08}s`);
   }
-  revealObserver.observe(el);
+  const rect = el.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    el.classList.add('in-view');
+  } else {
+    revealObserver.observe(el);
+  }
 });
 
 /* ===== Parallax background glows ===== */
