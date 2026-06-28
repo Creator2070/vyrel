@@ -521,3 +521,255 @@ a { text-decoration: none; color: inherit; }
   .steps { grid-template-columns: 1fr; }
   .form-row { flex-direction: column; }
 }
+
+/* Splash / Startanimation */
+.splash {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 35%, #1b2319 0%, var(--bg) 65%, #090c08 100%);
+  overflow: hidden;
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.7s;
+}
+
+.splash.splash-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+body.splash-active { overflow: hidden; }
+
+.splash-scene {
+  position: relative;
+  width: min(480px, 85vw);
+  height: min(440px, 78vw);
+  margin-bottom: 28px;
+}
+
+.splash-food {
+  position: absolute;
+  opacity: 0;
+  transform: translateY(28px) scale(0.85);
+  animation: splashFoodIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pizza */
+.splash-pizza {
+  width: 190px;
+  height: 190px;
+  top: 2%;
+  left: 58%;
+  margin-left: -95px;
+  z-index: 2;
+  animation-delay: 0.15s;
+}
+
+.pizza-crust {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(160deg, #e6b35c, #c8893a);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35), inset 0 0 0 6px rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: splashSpin 16s linear infinite;
+}
+
+.pizza-cheese {
+  position: relative;
+  width: 84%;
+  height: 84%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffe28a, #f0b840 55%, #d99a2d 100%);
+  box-shadow: inset 0 4px 10px rgba(0,0,0,0.18);
+}
+
+.pepperoni {
+  position: absolute;
+  width: 13%;
+  height: 13%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #c64a3a, #8c2c22);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,0.15);
+}
+.p1 { top: 18%; left: 28%; }
+.p2 { top: 22%; left: 60%; }
+.p3 { top: 48%; left: 42%; }
+.p4 { top: 62%; left: 22%; }
+.p5 { top: 60%; left: 66%; }
+
+.basil {
+  position: absolute;
+  width: 9%;
+  height: 6%;
+  border-radius: 50% 0 50% 50%;
+  background: #3f7a3a;
+}
+.b1 { top: 36%; left: 52%; transform: rotate(35deg); }
+.b2 { top: 58%; left: 48%; transform: rotate(-20deg); }
+
+/* Salad */
+.splash-salad {
+  width: 150px;
+  height: 140px;
+  top: 56%;
+  left: 6%;
+  animation-delay: 0.35s;
+}
+
+.salad-bowl {
+  position: relative;
+  width: 100%;
+  height: 78%;
+  margin-top: 22%;
+  border-radius: 0 0 50% 50% / 0 0 65% 65%;
+  background: linear-gradient(180deg, #fdfbf6, #e3dcc6);
+  box-shadow: 0 14px 22px rgba(0,0,0,0.3), inset 0 -14px 18px rgba(0,0,0,0.14), inset 0 3px 0 rgba(255,255,255,0.6);
+}
+
+.salad-bowl::before {
+  content: '';
+  position: absolute;
+  top: -8%;
+  left: -4%;
+  width: 108%;
+  height: 22%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #fffdf8, #ece4cd);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.leaf {
+  position: absolute;
+  width: 36%;
+  height: 30%;
+  border-radius: 50% 50% 50% 10%;
+  background: linear-gradient(135deg, #8cc476, #4f8f44);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+.l1 { top: -8%; left: 10%; transform: rotate(-22deg); }
+.l2 { top: -16%; left: 36%; transform: rotate(4deg); }
+.l3 { top: -8%; left: 58%; transform: rotate(26deg); }
+
+.tomato {
+  position: absolute;
+  width: 16%;
+  height: 16%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff8a6b, #d6402a);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+.t1 { top: 8%; left: 20%; }
+.t2 { top: 16%; left: 62%; }
+
+.cucumber {
+  position: absolute;
+  width: 18%;
+  height: 9%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #d6efb0, #8fc25f);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+.c1 { top: 24%; left: 42%; }
+
+/* Sushi */
+.splash-sushi {
+  width: 130px;
+  height: 50px;
+  bottom: 2%;
+  right: 16%;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  animation-delay: 0.55s;
+}
+
+.sushi-piece {
+  width: 30px;
+  height: 38px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #fff 0%, #fff 38%, #1d1d1d 38%, #1d1d1d 100%);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.sushi-topping {
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: radial-gradient(circle at 50% 30%, #ff8a6b, #e25a3b);
+  border-radius: 0 0 10px 10px;
+}
+
+.s2 { height: 33px; }
+.s3 { height: 30px; }
+
+/* Headline + Button */
+.splash-title {
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  font-size: 1.4rem;
+  letter-spacing: 1.5px;
+  opacity: 0;
+  animation: splashFadeUp 0.8s ease forwards;
+  animation-delay: 0.75s;
+  margin-bottom: 28px;
+}
+
+.splash-enter {
+  display: block;
+  margin: 0 auto;
+  padding: 16px 42px;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: splashFadeUp 0.8s ease forwards;
+  animation-delay: 0.95s;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 10px 24px rgba(200, 160, 77, 0.3);
+}
+
+.splash-enter:hover {
+  background: var(--accent-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(200, 160, 77, 0.4);
+}
+
+@keyframes splashFoodIn {
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes splashFadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes splashSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .splash-scene { height: 360px; }
+  .splash-pizza { width: 160px; height: 160px; }
+  .splash-salad { width: 130px; height: 105px; left: 6%; }
+  .splash-sushi { right: 4%; }
+}

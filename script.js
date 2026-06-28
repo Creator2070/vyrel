@@ -1,5 +1,15 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+const splash = document.getElementById('splash');
+const splashEnter = document.getElementById('splashEnter');
+if (splash && splashEnter) {
+  document.body.classList.add('splash-active');
+  splashEnter.addEventListener('click', () => {
+    splash.classList.add('splash-hidden');
+    document.body.classList.remove('splash-active');
+  });
+}
+
 const navToggle = document.getElementById('navToggle');
 const navLinks = document.querySelector('.nav-links');
 navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
