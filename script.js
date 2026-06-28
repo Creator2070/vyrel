@@ -25,7 +25,7 @@ for (let i = 0; i < starCount; i++) {
   camera.position.set(0, 0.4, 7.4);
 
   /* ---- Mouse-drag camera orbit ---- */
-  const camTarget = new THREE.Vector3(0, 1.5, 0);
+  const camTarget = new THREE.Vector3(0, 0.5, 0);
   const camRadius = camera.position.distanceTo(camTarget);
   let camTheta = Math.atan2(camera.position.x - camTarget.x, camera.position.z - camTarget.z);
   let camPhi = Math.acos((camera.position.y - camTarget.y) / camRadius);
@@ -82,7 +82,7 @@ for (let i = 0; i < starCount; i++) {
   // Master group: lifted above the headline/button so the morphing
   // food shape stays clear of the text overlay.
   const stage = new THREE.Group();
-  stage.position.y = 1.5;
+  stage.position.y = 2.6;
   scene.add(stage);
 
   const radius = 1.35;
