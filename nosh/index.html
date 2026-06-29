@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nosh. Deli & Café – Vegane Bowls, Wraps & Kaffee in Köln-Lindenthal</title>
+<meta name="description" content="Nosh. Deli & Café in Köln-Sülz – 100% vegane Salate, Wraps, Snacks und Kaffee. Sülzburgstraße 5a, 50937 Köln. Abholung vor dem Laden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#top" class="logo">Nosh<span>.</span></a>
+    <nav class="nav-links">
+      <a href="#menu">Speisekarte</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#bewertungen">Bewertungen</a>
+      <a href="#kontakt" class="nav-cta">Standort &amp; Öffnungszeiten</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menü öffnen" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-img" id="heroImg" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1920&q=80" alt="Veganer Wrap mit roter Bete und Falafel">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <p class="eyebrow fade-up">100% vegan · Köln-Sülz</p>
+    <h1 class="fade-up" style="--d:0.1s">Frisch, bunt <span>&amp; komplett vegan.</span></h1>
+    <p class="hero-sub fade-up" style="--d:0.2s">Nosh. Deli &amp; Café ist die kleine Straßenbude in Köln-Lindenthal mit den großen Salaten, knackigen Wraps und richtig gutem Kaffee. Mit Liebe gemacht, jeden Tag frisch.</p>
+    <div class="hero-actions fade-up" style="--d:0.3s">
+      <a href="#kontakt" class="btn btn-primary">Route &amp; Öffnungszeiten</a>
+      <a href="#menu" class="btn btn-ghost">Speisekarte ansehen</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scrollen</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section class="trust-bar">
+  <div class="container trust-items">
+    <div class="trust-item"><strong>4,9 ★</strong><span>101 Bewertungen</span></div>
+    <div class="trust-item"><strong>100%</strong><span>vegan</span></div>
+    <div class="trust-item"><strong>1–10 €</strong><span>pro Gericht</span></div>
+    <div class="trust-item"><strong>Abholung</strong><span>vor dem Laden</span></div>
+  </div>
+</section>
+
+<section class="section gallery" aria-label="Eindrücke aus dem Laden">
+  <div class="container gallery-grid">
+    <div class="gallery-item gallery-item-tall reveal"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=80" alt="Veganer Wrap aufgeschnitten" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=700&q=80" alt="Frische Salate in Schalen" loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=700&q=80" alt="Ladenfront von Nosh." loading="lazy"></div>
+    <div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=700&q=80" alt="Salatbar Nahaufnahme" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="section" id="menu">
+  <div class="container">
+    <p class="section-tag">All vegan</p>
+    <h2>Unsere Speisekarte</h2>
+    <p class="section-lead">Alles bei Nosh. ist 100% pflanzlich – von der Salatbar bis zum Latte.</p>
+
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <h3>Salate</h3>
+        <p class="menu-card-note">klein / groß</p>
+        <ul class="menu-list">
+          <li><span>Bohne Selleri</span><span class="price">5,90&nbsp;€ / 9,50&nbsp;€</span></li>
+          <li><span>Rote Bete Kartoffel</span><span class="price"></span></li>
+          <li><span>Linse Reis</span><span class="price"></span></li>
+          <li><span>Cous Cous</span><span class="price"></span></li>
+          <li><span>Rohkost</span><span class="price"></span></li>
+          <li><span>Kräuter Pasta</span><span class="price"></span></li>
+          <li><span>Spicy Tahini</span><span class="price"></span></li>
+        </ul>
+      </div>
+
+      <div class="menu-card reveal">
+        <h3>Snacks</h3>
+        <ul class="menu-list">
+          <li><span>Wrap</span><span class="price">7,00&nbsp;€</span></li>
+          <li><span>Veggie Ball</span><span class="price">2,50&nbsp;€</span></li>
+        </ul>
+        <h3 class="menu-card-subhead">Süßes</h3>
+        <ul class="menu-list">
+          <li><span>Mango Cheesecake</span><span class="price">4,00&nbsp;€</span></li>
+          <li><span>Bliss Ball</span><span class="price">2,00&nbsp;€</span></li>
+        </ul>
+      </div>
+
+      <div class="menu-card reveal">
+        <h3>Kaffee</h3>
+        <ul class="menu-list">
+          <li><span>Espresso / Doppio</span><span class="price">1,80&nbsp;€ / 2,40&nbsp;€</span></li>
+          <li><span>Cortado</span><span class="price">2,40&nbsp;€</span></li>
+          <li><span>Cappuccino</span><span class="price">3,00&nbsp;€</span></li>
+          <li><span>Flat White</span><span class="price">3,60&nbsp;€</span></li>
+          <li><span>Latte</span><span class="price">3,20&nbsp;€</span></li>
+          <li><span>Americano</span><span class="price">2,60&nbsp;€</span></li>
+        </ul>
+      </div>
+
+      <div class="menu-card reveal">
+        <h3>Säfte</h3>
+        <ul class="menu-list">
+          <li><span>Apfel-Sellerie</span><span class="price">3,50&nbsp;€</span></li>
+          <li><span>Orange-Karotte</span><span class="price">3,50&nbsp;€</span></li>
+        </ul>
+        <h3 class="menu-card-subhead">Colds</h3>
+        <ul class="menu-list">
+          <li><span>Charitea</span><span class="price">3,00&nbsp;€</span></li>
+          <li><span>Lemonaid</span><span class="price">3,00&nbsp;€</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="ueber-uns">
+  <div class="container about-inner">
+    <div class="about-text reveal">
+      <p class="section-tag">Über Nosh.</p>
+      <h2>Eine kleine Bude mit großem Anspruch</h2>
+      <p class="section-lead">Hinter dem unscheinbaren Kiosk in der Sülzburgstraße steckt eine Salatbar, die es in sich hat: frische, knackige Zutaten, hausgemachte Dressings und Wraps vom Grill – komplett pflanzlich, jeden Tag neu zubereitet.</p>
+      <ul class="menu-points">
+        <li>Salatbar mit täglich wechselnder Auswahl</li>
+        <li>Frisch gepresste Säfte &amp; Kaffee aus eigener Hand</li>
+        <li>Abholung direkt vor dem Laden – kein Lieferdienst</li>
+      </ul>
+    </div>
+    <div class="about-images reveal">
+      <img class="about-img about-img-1" src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=700&q=80" alt="Eingang von Nosh. Deli & Café" loading="lazy">
+      <img class="about-img about-img-2" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=500&q=80" alt="Veganer Wrap Nahaufnahme" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bewertungen">
+  <div class="container">
+    <p class="section-tag">4,9 ★ bei Google · 101 Bewertungen</p>
+    <h2>Was Gäste sagen</h2>
+    <blockquote class="review reveal">
+      <p>„Ich hätte ehrlich gesagt nicht erwartet, an einer kleinen Straßenbude so guten Salat zu bekommen! Die Zutaten waren super frisch und knackig, und man merkt sofort, dass hier mit Liebe gearbeitet wird. Auch für Veganer und Vegetarier ist die Auswahl perfekt. Der Mitarbeiter ist super lieb und lustig – man fühlt sich direkt willkommen. Für einen schnellen, gesunden Snack zwischendurch ein echter Geheimtipp. Ich komme auf jeden Fall wieder!“</p>
+      <footer>★★★★★ &middot; Google-Rezension, vor 3 Monaten</footer>
+    </blockquote>
+  </div>
+</section>
+
+<section class="cta-banner" id="kontakt">
+  <div class="container cta-inner">
+    <h2>Komm vorbei.</h2>
+    <p class="cta-address">Sülzburgstraße 5a, 50937 Köln-Lindenthal</p>
+    <div class="hours-table">
+      <div class="hours-row"><span>Montag – Freitag</span><span>10:00 – 17:00</span></div>
+      <div class="hours-row"><span>Samstag</span><span>Geschlossen</span></div>
+      <div class="hours-row"><span>Sonntag</span><span>Geschlossen</span></div>
+    </div>
+    <p class="cta-note">Imbiss &middot; 1–10&nbsp;€ &middot; Abholung vor dem Laden &middot; Kein Lieferdienst</p>
+    <a class="btn btn-primary" href="https://www.google.com/maps/search/?api=1&query=S%C3%BClzburgstra%C3%9Fe+5a+50937+K%C3%B6ln" target="_blank" rel="noopener">Route planen</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo">Nosh<span>.</span></span>
+      <p>Deli &amp; Café in Köln-Lindenthal. 100% vegan.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#menu">Speisekarte</a>
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <p class="footer-copy">© <span id="year"></span> Nosh. Deli &amp; Café.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
