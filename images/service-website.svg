@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Illustration einer Restaurant-Website in einem Browserfenster">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2419"/>
+      <stop offset="100%" stop-color="#0a0e0a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8c877"/>
+      <stop offset="100%" stop-color="#9c7c34"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+
+  <!-- browser window -->
+  <rect x="150" y="120" width="500" height="360" rx="14" fill="#f8f7f3"/>
+  <rect x="150" y="120" width="500" height="46" rx="14" fill="#e4e1d6"/>
+  <rect x="150" y="150" width="500" height="16" fill="#e4e1d6"/>
+  <circle cx="178" cy="143" r="7" fill="#c8a04d"/>
+  <circle cx="202" cy="143" r="7" fill="#d8cdb0"/>
+  <circle cx="226" cy="143" r="7" fill="#d8cdb0"/>
+
+  <!-- hero image block inside browser -->
+  <rect x="176" y="192" width="448" height="140" rx="8" fill="url(#gold)" opacity="0.85"/>
+  <circle cx="400" cy="262" r="26" fill="#f8f7f3" opacity="0.9"/>
+  <path d="M382 262 l12 14 l24 -28" stroke="#9c7c34" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- text lines -->
+  <rect x="176" y="352" width="220" height="14" rx="7" fill="#1a1f1a"/>
+  <rect x="176" y="376" width="300" height="10" rx="5" fill="#9aa196"/>
+  <rect x="176" y="394" width="260" height="10" rx="5" fill="#9aa196"/>
+
+  <!-- CTA button -->
+  <rect x="176" y="424" width="140" height="34" rx="8" fill="#c8a04d"/>
+  <rect x="336" y="424" width="140" height="34" rx="8" fill="none" stroke="#9aa196"/>
+
+  <!-- floating device accent -->
+  <g transform="translate(560,410)">
+    <rect x="-38" y="-56" width="76" height="130" rx="12" fill="#131a12" stroke="#c8a04d" stroke-width="2"/>
+    <rect x="-28" y="-40" width="56" height="80" rx="4" fill="#f8f7f3"/>
+    <circle cx="0" cy="52" r="6" fill="#c8a04d"/>
+  </g>
+</svg>

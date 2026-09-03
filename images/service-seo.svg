@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Illustration von lokaler Sichtbarkeit und SEO mit Standortnadel, Lupe und Wachstumsbalken">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2419"/>
+      <stop offset="100%" stop-color="#0a0e0a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8c877"/>
+      <stop offset="100%" stop-color="#9c7c34"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+
+  <!-- map grid backdrop -->
+  <g stroke="#2a3525" stroke-width="1.5" opacity="0.7">
+    <line x1="0" y1="150" x2="800" y2="150"/>
+    <line x1="0" y1="300" x2="800" y2="300"/>
+    <line x1="0" y1="450" x2="800" y2="450"/>
+    <line x1="200" y1="0" x2="200" y2="600"/>
+    <line x1="400" y1="0" x2="400" y2="600"/>
+    <line x1="600" y1="0" x2="600" y2="600"/>
+  </g>
+
+  <!-- growth bars -->
+  <g>
+    <rect x="140" y="360" width="46" height="140" rx="6" fill="#3a4a34"/>
+    <rect x="200" y="300" width="46" height="200" rx="6" fill="#5a6a4e"/>
+    <rect x="260" y="220" width="46" height="280" rx="6" fill="url(#gold)"/>
+  </g>
+
+  <!-- location pin -->
+  <g transform="translate(500,260)">
+    <path d="M0 -110 C60 -110 100 -70 100 -20 C100 50 0 130 0 130 C0 130 -100 50 -100 -20 C-100 -70 -60 -110 0 -110 Z" fill="url(#gold)"/>
+    <circle r="34" fill="#0a0e0a"/>
+    <circle r="14" fill="#e8c877"/>
+  </g>
+
+  <!-- magnifying glass -->
+  <g transform="translate(600,420)">
+    <circle r="52" fill="none" stroke="#f8f7f3" stroke-width="10"/>
+    <line x1="38" y1="38" x2="90" y2="90" stroke="#f8f7f3" stroke-width="12" stroke-linecap="round"/>
+  </g>
+</svg>

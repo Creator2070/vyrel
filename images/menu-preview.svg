@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 760" role="img" aria-label="Illustration einer digitalen Speiseplan-Ansicht auf einem Smartphone">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2419"/>
+      <stop offset="100%" stop-color="#0a0e0a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8c877"/>
+      <stop offset="100%" stop-color="#9c7c34"/>
+    </linearGradient>
+  </defs>
+  <rect width="700" height="760" fill="url(#bg)"/>
+
+  <g transform="translate(60,60)">
+    <rect width="580" height="640" rx="24" fill="#f8f7f3"/>
+
+    <!-- header banner -->
+    <rect width="580" height="180" rx="24" fill="url(#gold)"/>
+    <rect y="140" width="580" height="40" fill="url(#gold)"/>
+    <rect x="40" y="60" width="220" height="26" rx="6" fill="#0a0e0a" opacity="0.85"/>
+    <rect x="40" y="98" width="150" height="14" rx="4" fill="#0a0e0a" opacity="0.6"/>
+
+    <!-- category tag -->
+    <rect x="40" y="204" width="120" height="30" rx="15" fill="#e4e1d6"/>
+    <rect x="180" y="204" width="120" height="30" rx="15" fill="#1a1f1a"/>
+    <rect x="320" y="204" width="120" height="30" rx="15" fill="#e4e1d6"/>
+
+    <!-- dish rows -->
+    <g>
+      <circle cx="72" cy="300" r="34" fill="#c8a04d" opacity="0.9"/>
+      <rect x="126" y="278" width="240" height="16" rx="4" fill="#1a1f1a"/>
+      <rect x="126" y="302" width="320" height="10" rx="4" fill="#9aa196"/>
+      <rect x="126" y="318" width="260" height="10" rx="4" fill="#9aa196"/>
+      <rect x="480" y="286" width="60" height="24" rx="6" fill="#9c7c34"/>
+    </g>
+
+    <line x1="40" y1="360" x2="540" y2="360" stroke="#e4e1d6" stroke-width="2"/>
+
+    <g>
+      <circle cx="72" cy="410" r="34" fill="#9c7c34" opacity="0.9"/>
+      <rect x="126" y="388" width="200" height="16" rx="4" fill="#1a1f1a"/>
+      <rect x="126" y="412" width="300" height="10" rx="4" fill="#9aa196"/>
+      <rect x="126" y="428" width="240" height="10" rx="4" fill="#9aa196"/>
+      <rect x="480" y="396" width="60" height="24" rx="6" fill="#9c7c34"/>
+    </g>
+
+    <line x1="40" y1="470" x2="540" y2="470" stroke="#e4e1d6" stroke-width="2"/>
+
+    <g>
+      <circle cx="72" cy="520" r="34" fill="#c8a04d" opacity="0.9"/>
+      <rect x="126" y="498" width="230" height="16" rx="4" fill="#1a1f1a"/>
+      <rect x="126" y="522" width="310" height="10" rx="4" fill="#9aa196"/>
+      <rect x="126" y="538" width="250" height="10" rx="4" fill="#9aa196"/>
+      <rect x="480" y="506" width="60" height="24" rx="6" fill="#9c7c34"/>
+    </g>
+
+    <!-- QR footer -->
+    <g transform="translate(230,586)">
+      <rect width="120" height="34" rx="17" fill="#1a1f1a"/>
+      <rect x="20" y="10" width="14" height="14" fill="#f8f7f3"/>
+      <rect x="40" y="10" width="14" height="14" fill="#f8f7f3"/>
+      <rect x="60" y="10" width="14" height="14" fill="#f8f7f3"/>
+      <rect x="86" y="10" width="14" height="14" fill="#f8f7f3"/>
+    </g>
+  </g>
+</svg>

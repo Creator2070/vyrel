@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 480" role="img" aria-label="Illustration eines angerichteten Gerichts von oben, Nahaufnahme">
+  <defs>
+    <radialGradient id="plate" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#fbf6e6"/>
+      <stop offset="70%" stop-color="#efe6cd"/>
+      <stop offset="100%" stop-color="#d8cba0"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2419"/>
+      <stop offset="100%" stop-color="#0a0e0a"/>
+    </linearGradient>
+    <radialGradient id="food1" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#e0a95a"/>
+      <stop offset="100%" stop-color="#a8632e"/>
+    </radialGradient>
+    <radialGradient id="food2" cx="40%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#8ba35c"/>
+      <stop offset="100%" stop-color="#4d6631"/>
+    </radialGradient>
+  </defs>
+  <rect width="500" height="480" fill="url(#bg)"/>
+
+  <circle cx="250" cy="240" r="210" fill="url(#plate)"/>
+  <circle cx="250" cy="240" r="210" fill="none" stroke="#c8a04d" stroke-width="3" opacity="0.5"/>
+  <circle cx="250" cy="240" r="150" fill="none" stroke="#d8cba0" stroke-width="2"/>
+
+  <!-- main protein -->
+  <ellipse cx="235" cy="235" rx="95" ry="70" fill="url(#food1)"/>
+  <g stroke="#7a4620" stroke-width="3" opacity="0.6">
+    <path d="M170 210 q60 -30 130 5"/>
+    <path d="M175 245 q60 -20 120 10"/>
+  </g>
+
+  <!-- side greens -->
+  <g fill="url(#food2)">
+    <ellipse cx="345" cy="180" rx="34" ry="20"/>
+    <ellipse cx="355" cy="210" rx="26" ry="16"/>
+    <ellipse cx="150" cy="310" rx="30" ry="18"/>
+  </g>
+
+  <!-- garnish dots / sauce swoosh -->
+  <path d="M150 160 q40 -20 90 0" stroke="#c8a04d" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <circle cx="330" cy="300" r="6" fill="#c8a04d"/>
+  <circle cx="310" cy="320" r="4" fill="#c8a04d"/>
+  <circle cx="345" cy="325" r="4" fill="#c8a04d"/>
+
+  <!-- steam lines -->
+  <g stroke="#f8f7f3" stroke-width="4" fill="none" opacity="0.35" stroke-linecap="round">
+    <path d="M210 120 q10 -20 0 -40 q-10 -20 0 -40"/>
+    <path d="M250 110 q10 -20 0 -40 q-10 -20 0 -40"/>
+    <path d="M290 120 q10 -20 0 -40 q-10 -20 0 -40"/>
+  </g>
+</svg>

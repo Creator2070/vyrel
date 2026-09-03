@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Abstrakte Vogelperspektive einer Restaurant-Terrasse, KI-generierte Illustration">
+  <defs>
+    <linearGradient id="ground" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2419"/>
+      <stop offset="55%" stop-color="#131a12"/>
+      <stop offset="100%" stop-color="#0a0e0a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="18%" r="65%">
+      <stop offset="0%" stop-color="#c8a04d" stop-opacity="0.35"/>
+      <stop offset="45%" stop-color="#c8a04d" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#c8a04d" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="plate" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f3e6c4"/>
+      <stop offset="100%" stop-color="#c8a04d"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3a4a34"/>
+      <stop offset="100%" stop-color="#232f20"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#ground)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+
+  <!-- faint pathway grid, aerial hardscape lines -->
+  <g stroke="#2a3525" stroke-width="2" opacity="0.6">
+    <line x1="0" y1="150" x2="1600" y2="150"/>
+    <line x1="0" y1="420" x2="1600" y2="420"/>
+    <line x1="0" y1="690" x2="1600" y2="690"/>
+    <line x1="260" y1="0" x2="260" y2="900"/>
+    <line x1="800" y1="0" x2="800" y2="900"/>
+    <line x1="1340" y1="0" x2="1340" y2="900"/>
+  </g>
+
+  <!-- scattered planters / greenery blobs -->
+  <g fill="#26361f" opacity="0.8">
+    <ellipse cx="120" cy="80" rx="70" ry="42"/>
+    <ellipse cx="1500" cy="90" rx="80" ry="46"/>
+    <ellipse cx="90" cy="800" rx="90" ry="50"/>
+    <ellipse cx="1520" cy="780" rx="75" ry="44"/>
+    <ellipse cx="800" cy="60" rx="60" ry="34"/>
+  </g>
+
+  <!-- tables viewed from above -->
+  <g>
+    <!-- table template repeated via individual groups for organic placement -->
+    <g transform="translate(300,240) rotate(-4)">
+      <rect x="-90" y="-60" width="180" height="120" rx="18" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="34" fill="url(#plate)"/>
+      <rect x="-46" y="-4" width="30" height="8" rx="4" fill="#e9e4d6" opacity="0.8"/>
+      <rect x="18" y="-4" width="30" height="8" rx="4" fill="#e9e4d6" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(620,180) rotate(3)">
+      <rect x="-95" y="-65" width="190" height="130" rx="18" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="36" fill="url(#plate)"/>
+      <circle r="12" cx="60" cy="0" fill="#f3e6c4" opacity="0.9"/>
+    </g>
+
+    <g transform="translate(980,260) rotate(-6)">
+      <rect x="-100" y="-68" width="200" height="136" rx="20" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="38" fill="url(#plate)"/>
+      <rect x="-50" y="-6" width="34" height="10" rx="5" fill="#e9e4d6" opacity="0.8"/>
+      <rect x="20" y="-6" width="34" height="10" rx="5" fill="#e9e4d6" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(1280,190) rotate(5)">
+      <rect x="-85" y="-58" width="170" height="116" rx="16" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="32" fill="url(#plate)"/>
+    </g>
+
+    <g transform="translate(430,540) rotate(2)">
+      <rect x="-100" y="-70" width="200" height="140" rx="20" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="38" fill="url(#plate)"/>
+      <rect x="-52" y="-6" width="36" height="10" rx="5" fill="#e9e4d6" opacity="0.8"/>
+      <rect x="20" y="-6" width="36" height="10" rx="5" fill="#e9e4d6" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(800,600) rotate(-3)">
+      <rect x="-110" y="-72" width="220" height="144" rx="22" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="40" fill="url(#plate)"/>
+      <circle r="14" cx="-64" cy="10" fill="#f3e6c4" opacity="0.9"/>
+      <circle r="14" cx="64" cy="-10" fill="#f3e6c4" opacity="0.9"/>
+    </g>
+
+    <g transform="translate(1180,560) rotate(4)">
+      <rect x="-90" y="-60" width="180" height="120" rx="18" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="34" fill="url(#plate)"/>
+    </g>
+
+    <g transform="translate(600,760) rotate(-2)">
+      <rect x="-95" y="-64" width="190" height="128" rx="18" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="36" fill="url(#plate)"/>
+      <rect x="-48" y="-5" width="32" height="9" rx="4" fill="#e9e4d6" opacity="0.8"/>
+      <rect x="18" y="-5" width="32" height="9" rx="4" fill="#e9e4d6" opacity="0.8"/>
+    </g>
+
+    <g transform="translate(1000,800) rotate(6)">
+      <rect x="-85" y="-56" width="170" height="112" rx="16" fill="url(#edge)" stroke="#000" stroke-opacity="0.15"/>
+      <circle r="32" fill="url(#plate)"/>
+    </g>
+  </g>
+
+  <!-- drone position + radiating scan rings, subtle "from above" motif -->
+  <g transform="translate(800,120)" opacity="0.9">
+    <circle r="10" fill="#f3e6c4"/>
+    <circle r="46" fill="none" stroke="#c8a04d" stroke-width="1.5" opacity="0.5"/>
+    <circle r="86" fill="none" stroke="#c8a04d" stroke-width="1.2" opacity="0.3"/>
+    <circle r="130" fill="none" stroke="#c8a04d" stroke-width="1" opacity="0.18"/>
+  </g>
+</svg>
